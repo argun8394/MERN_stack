@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const API = import.meta.env.VITE_API_URL;
+
 const Login = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -24,7 +26,7 @@ const Login = () => {
 
     console.log(formData)
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/login', formData);
+      const response = await axios.post(`${API}/auth/login`, formData);
 
       if (response.status === 200) {
         setSuccess('Login successful!');

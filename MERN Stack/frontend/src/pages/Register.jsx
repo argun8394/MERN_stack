@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const API = import.meta.env.VITE_API_URL;
+
 const Register = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -26,7 +28,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/users', formData);
+      const response = await axios.post(`${API}/users`, formData);
 
       if (response.status === 201) {
         setSuccess('Registration successful!');

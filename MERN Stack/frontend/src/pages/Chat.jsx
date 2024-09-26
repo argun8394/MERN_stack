@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
+const API = import.meta.env.VITE_API_URL;
+
 const Chat = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -20,7 +22,7 @@ const Chat = () => {
   const token = localStorage.getItem('accessToken');
   const getQuestions = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/questions', {
+      const response = await axios.get(`${API}/questions`, {
         headers: {
           'Authorization': 'Bearer ' + token
         }
@@ -43,7 +45,7 @@ const Chat = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/answers', formData, {
+      const response = await axios.post(`${API}/answers`, formData, {
         headers: {
           'Authorization': 'Bearer ' + token
         }
@@ -99,7 +101,7 @@ const Chat = () => {
             )))
         }
 
-        {questions.length > 0 ? (
+        
           <form onSubmit={handleSubmit} className="w-full">
             <div className="flex flex-col gap-2  ">
               <input
@@ -118,9 +120,7 @@ const Chat = () => {
               >Send</button>
             </div>
           </form>
-        ) : (
-          <p>Loading questions...</p>
-        )}
+       
       </div>
     </div>
   );
