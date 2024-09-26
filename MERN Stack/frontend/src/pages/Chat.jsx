@@ -52,7 +52,6 @@ const Chat = () => {
       });
 
       if (response.status === 201) {
-        arr.push(formData.answer)
         setSubmittedAnswers([
           ...submittedAnswers,
           { answer: formData.answer }
@@ -63,7 +62,7 @@ const Chat = () => {
         setFormData({ answer: '' });
       }
     } catch (err) {
-      setError('Failed to submit answer. ');
+      setError('Failed to submit answer. ' + err.message);
       setSuccess('');
       console.log(error);
     }
@@ -74,7 +73,12 @@ const Chat = () => {
   }, [])
 
   return (
-    <div className="flex flex-col justify-center items-center w-full pageH mt-16">
+    <div className="relative flex flex-col justify-center items-center w-full pageH mt-16 pt-14">
+
+      <div className='absolute top-4 right-4 '>
+        <p className='underline font-bold'>Session Start Time</p>        
+
+      </div>
 
       <div className="flex flex-col justify-end items-center gap-2 border py-6 px-8 rounded-md min-w-[500px] bg-[#120a2e] text-white overflow-hidden h-[700px]">
 

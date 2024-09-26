@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import Chat from "../pages/Chat";
 import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/Navbar";
+import AnswerList from "../pages/AnswerList";
 
 const AppRouter = () => {
   return (
@@ -13,9 +14,10 @@ const AppRouter = () => {
         <Navbar/>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/answers" element={<AnswerList />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/chat" element={<Chat />} />
           <Route  />
         </Routes>
       <Footer/>
