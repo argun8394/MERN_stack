@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const API = import.meta.env.VITE_API_URL;
+// const API = import.meta.env.VITE_API_URL;
 
 const Login = () => {
   const [error, setError] = useState('');
@@ -26,19 +26,18 @@ const Login = () => {
 
     console.log(formData)
     try {
-      const response = await axios.post(`${API}/auth/login`, formData);
-
-      if (response.status === 200) {
+      const response = await axios.post(`http://127.0.0.1:8000/auth/login`, formData);
+      
+        console.log(response)
         setSuccess('Login successful!');
         setError('');
        
         localStorage.setItem('accessToken', response.data.bearer.accessToken);
         navigate('/chat');
-      }
     } catch (err) {
       setError('Login failed. ');
       setSuccess('');
-      console.log(error)
+      console.log(err)
     }
   };
 
