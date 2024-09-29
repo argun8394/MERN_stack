@@ -28,9 +28,9 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${API}/users`, formData);
-
-      if (response.status === 201) {
+      const response = await axios.post(`http://127.0.0.1:8000/users`, formData);
+      // console.log(response)
+      if (response.status == 201) {
         setSuccess('Registration successful!');
         setError('');
         console.log(success)
