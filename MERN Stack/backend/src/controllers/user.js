@@ -19,14 +19,13 @@ module.exports = {
     },
 
     create: async (req, res) => {
-       
-
+       console.log(req.body)
         // Disallow setting admin/staff:
         req.body.is_staff = false
         req.body.is_superadmin = false
 
         const data = await User.create(req.body)
-
+        console.log(data)
           res.status(201).send({
             error: false,
             data

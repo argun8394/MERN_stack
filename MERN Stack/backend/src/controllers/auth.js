@@ -20,7 +20,6 @@ module.exports = {
             if (user && user.password == passwordEncrypt(password)) {
 
                 if (user.is_active) {
-
         
                    //JWT:
                    const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_KEY, { expiresIn: '60m' }) 
