@@ -4,7 +4,8 @@
 * Node.js(Express.js)
 * React-router
 * Axios
-* JWT 
+* JWT
+* Permissions 
 * MongoDB
 * Mongoose
 * Tailwind
